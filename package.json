@@ -1,0 +1,65 @@
+{
+  "name": "yesterdaynews",
+  "version": "1.0.0",
+  "description": "A simple 11ty static site generator with serverless for daily yesterday news updates",
+  "type": "module",
+  "scripts": {
+    "clean:site": "rimraf './_site' './_temp'",
+    "debug:11ty": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "watch:11ty": "npx @11ty/eleventy --serve --quiet",
+    "build:11ty": "npx @11ty/eleventy",
+    "build:js": "npx esbuild ./src/assets/js/main.js --outfile=./_site/js/main.js --bundle --minify",
+    "watch:js": "npx esbuild ./src/assets/js/main.js --outfile=./_site/js/main.js --bundle --watch --sourcemap",
+    "watch:tailwind": "npx postcss src/assets/css/main.css -o ./_site/css/main.css --watch",
+    "build:tailwind": "npx postcss src/assets/css/main.css -o ./_site/css/main.css",
+    "start": "ELEVENTY_ENV=development npm-run-all --parallel watch:*",
+    "build": "ELEVENTY_ENV=production npm-run-all --serial build:11ty build:tailwind",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zapalblizh/YesterdayNews.git"
+  },
+  "keywords": [
+    "Netlify",
+    "Eleventy",
+    "Nunjucks",
+    "TailwindCSS"
+  ],
+  "author": {
+    "name": "Aleksandr Zapparov",
+    "email": "alexander@zapparov.dev",
+    "url": "https://zapparov.dev"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zapalblizh/YesterdayNews/issues"
+  },
+  "homepage": "https://github.com/zapalblizh/YesterdayNews#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2",
+    "@tailwindcss/cli": "^4.2.0",
+    "@tailwindcss/postcss": "^4.2.0",
+    "alpinejs": "^3.15.8",
+    "autoprefixer": "^10.4.24",
+    "cssnano": "^7.1.2",
+    "eleventy-plugin-phosphoricons": "^2.0.0",
+    "eleventy-plugin-speculation-rules": "^2.0.0",
+    "eleventy-plugin-svg-contents": "^0.7.0",
+    "esbuild": "^0.27.3",
+    "luxon": "^3.7.2",
+    "markdown-it": "^14.1.1",
+    "markdown-it-anchor": "^9.2.0",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "postcss-nested": "^7.0.2",
+    "rimraf": "^6.1.3",
+    "tailwindcss": "^4.2.0",
+    "tailwindcss-safe-area": "^1.3.0"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^10.7.0",
+    "@netlify/functions": "^5.1.2"
+  }
+}

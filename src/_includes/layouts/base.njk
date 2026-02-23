@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {# Metadata #}
+        <title>{{ title }}</title>
+        <meta name="author" content="Aleksandr Zapparov">
+        <meta name="description" content="Temporary description">
+        <meta name="generator" content="{{ eleventy.generator }}">
+
+        {# Styles #}
+        <link rel="preload" href="/css/main.css" as="style">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+        {{ content | safe }}
+    </body>
+</html>

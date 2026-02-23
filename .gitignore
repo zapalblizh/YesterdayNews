@@ -1,0 +1,19 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Eleventy
+_site/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.idea/
+
+# macOS
+.DS_Store
+
+# Serverless/Netlify
+.netlify/

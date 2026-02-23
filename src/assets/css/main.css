@@ -1,0 +1,8 @@
+@import "tailwindcss" source(none);
+@import "tailwindcss-safe-area";
+
+@source "../../pages/**/*.{md,njk}";
+@source "../js/**/*.js";
+@source "./**/*.css";
+@source "../../_includes/**/*.njk";
+@source "../../../config/**/*.js";
