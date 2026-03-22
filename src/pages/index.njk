@@ -1,10 +1,34 @@
 ---
 layout: base
-title: Temporary Page
-desc: Temp page for temp netlify
+title: Yesterday's News
+desc: News from yesterday
 permalink: /
 ---
 
-<div class="flex justify-center items-center min-h-screen w-full p-5 bg-blue-200">
-    <h1 class="text-5xl font-bold text-orange-400">Temporary Page for Netlify Testing</h1>
-</div>
+<main class="max-w-3xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Yesterday's News</h1>
+
+    {% if news.items.length %}
+        <p class="text-sm mb-6 opacity-60">{{ news.total }} articles</p>
+
+        <ul class="flex flex-col gap-6">
+            {% for article in news.items %}
+                <li>
+                    {% if article.urlToImage %}
+                        <img src="{{ article.urlToImage }}" alt="{{ article.title }}">
+                    {% endif %}
+                    <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
+                        <h2 class="font-bold text-lg">{{ article.title }}</h2>
+                    </a>
+                    <p class="text-sm opacity-60">{{ article.source.name }} &middot; {{ article.publishedAt | truncate(10, true, "") }}</p>
+                    {% if article.description %}
+                        <p class="mt-1">{{ article.description }}</p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No news stored yet. Run <code>npm run fetch</code> first.</p>
+    {% endif %}
+</main>

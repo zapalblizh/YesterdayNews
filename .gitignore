@@ -15,5 +15,8 @@ _site/
 # macOS
 .DS_Store
 
+# News data (local only, contains fetched articles)
+data/
+
 # Serverless/Netlify
 .netlify/

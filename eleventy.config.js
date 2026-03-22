@@ -1,3 +1,4 @@
+import "dotenv/config";
 import plugins from "./config/plugins.js";
 
 export default async function (eleventyConfig) {
@@ -47,3 +48,4 @@ export default async function (eleventyConfig) {
         pathPrefix: "/",
     };
 }
+
