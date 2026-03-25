@@ -5,30 +5,42 @@ desc: News from yesterday
 permalink: /
 ---
 
-<main class="max-w-3xl mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">Yesterday's News</h1>
+<div class="prose">
+    <h1>Article List</h1>
+    <p>
+        A feed of the most recent articles that updates every hour on UTC time
+        using the <a href="https://newsapi.org/">NewsAPI</a>
+    </p>
+</div>
 
-    {% if news.items.length %}
-        <p class="text-sm mb-6 opacity-60">{{ news.total }} articles</p>
 
-        <ul class="flex flex-col gap-6">
-            {% for article in news.items %}
-                <li>
-                    {% if article.urlToImage %}
-                        <img src="{{ article.urlToImage }}" alt="{{ article.title }}">
-                    {% endif %}
-                    <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
-                        <h2 class="font-bold text-lg">{{ article.title }}</h2>
+{% if news.items.length %}
+    <p class="text-sm mb-6 text-muted">Total retrieved: {{ news.total }} articles</p>
+
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {% for article in news.items %}
+            {% if article.urlToImage %}
+            <li class="card group">
+                <div class="aspect-opengraph overflow-hidden">
+                    <img class="object-cover w-full transition-transform duration-300 group-hover:scale-105" src="{{ article.urlToImage }}" alt="{{ article.title }}">
+                </div>
+
+                <div class="flex flex-col gap-2 p-6">
+                    <p class="text-sm text-muted">{{ article.source.name }} &middot; {{ article.publishedAt | truncate(10, true, "") }}</p>
+
+                    <a class="group-hover:text-teal-600" href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
+                        <h2 class="font-bold text-xl line-clamp-2">{{ article.title }}</h2>
                     </a>
-                    <p class="text-sm opacity-60">{{ article.source.name }} &middot; {{ article.publishedAt | truncate(10, true, "") }}</p>
-                    {% if article.description %}
-                        <p class="mt-1">{{ article.description }}</p>
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
 
-    {% else %}
-        <p>No news stored yet. Run <code>npm run fetch</code> first.</p>
-    {% endif %}
-</main>
+                    {% if article.description %}
+                        <p class="line-clamp-3 text-muted">{{ article.description }}</p>
+                    {% endif %}
+                </div>
+            </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+{% else %}
+    <p>No news stored yet. Run <code>npm run fetch</code> first.</p>
+{% endif %}

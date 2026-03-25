@@ -1,7 +1,87 @@
 @import "tailwindcss" source(none);
 @import "tailwindcss-safe-area";
 
+/* Base */
+@import "./base/reset.css";
+@import "./base/base.css";
+@import "./base/typography.css";
+
+/* Components & Utilities */
+@import "./components/card.css";
+@import "./utilities/utils.css";
+
+@theme {
+    /* Font families */
+    --font-sans:
+            "GeneralSans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans",
+            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    --font-mono: "PT Mono", "Roboto Mono", "JetBrains Mono", monospace;
+
+    /* Breakpoints */
+    --breakpoint-xxs: 360px;
+    --breakpoint-xs: 490px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-xxl: 1536px;
+
+    /* Aspect ratios (if you want these as variables too) */
+    --aspect-box: 1;
+    --aspect-landscape: 4 / 3;
+    --aspect-portrait: 3 / 4;
+    --aspect-video: 16 / 9;
+    --aspect-opengraph: 1200 / 630;
+
+    /* Z-index levels */
+    --z-60: 60;
+    --z-70: 70;
+    --z-80: 80;
+    --z-90: 90;
+    --z-100: 100;
+
+    /* Colors from Tailwind’s default palette */
+    --color-cursor: white;
+    --color-terminal: black;
+
+    /* --- Backgrounds ---
+     * Light:              bg-gray-50
+     * Dark:               dark:bg-gray-950  (considering switch to bg-[#031312])
+     */
+
+    /* --- Text ---
+     * Light primary:      text-gray-900
+     * Light muted:        text-gray-600
+     * Dark primary:       dark:text-gray-100
+     * Dark muted:         dark:text-gray-400
+     */
+
+    /* --- Accent (teal/mint) ---
+     * Light:              text-teal-700 / bg-teal-700
+     * Light hover:        hover:bg-teal-800
+     * Light subtle:       bg-teal-100
+     * Dark:               dark:text-teal-400 / dark:bg-teal-400
+     * Dark hover:         dark:hover:bg-teal-300
+     * Dark subtle:        dark:bg-teal-900/30  (needs /30 opacity modifier)
+     */
+
+    /* --- Inputs ---
+     * Light border:       border-gray-300
+     * Light focus:        focus:border-teal-600
+     * Dark border:        dark:border-gray-700
+     * Dark focus:         dark:focus:border-teal-400
+     */
+
+    /* --- Slider ---
+     * Light track:        bg-gray-200
+     * Dark track:         dark:bg-gray-700
+     */
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @source "../../pages/**/*.{md,njk}";
 @source "../js/**/*.js";
+@source "./**/*.css";
 @source "../../_includes/**/*.njk";
 @source "../../../config/**/*.js";

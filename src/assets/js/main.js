@@ -1,14 +1,12 @@
-import Alpine from "alpinejs";
-import debugLog from "./modules/_debugLog.js";
+import Alpine from 'alpinejs';
+import dataDOM from './modules/Alpine.data/DOM';
 
-window.Alpine = Alpine;
+window.Alpine = Alpine
 
-Alpine.data("xDOM", () => {
-    return {
-        init() {
-            debugLog("AlpineJS DOM init");
-        }
-    }
+Alpine.data("xDOM", dataDOM)
+
+// Start Alpine when the page is ready.
+window.addEventListener("DOMContentLoaded", () => {
+    Alpine.start();
 });
 
-Alpine.start();

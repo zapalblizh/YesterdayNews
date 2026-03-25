@@ -27,7 +27,7 @@ export default async () => {
             return articles;
         }
 
-        articles.items = data.articles;
+        articles.items = data.articles.filter(a => a.urlToImage);
 
         articles.total = articles.items.length;
     } catch (error) {
