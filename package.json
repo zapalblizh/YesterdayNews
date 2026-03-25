@@ -13,7 +13,7 @@
     "watch:tailwind": "npx postcss src/assets/css/main.css -o ./_site/css/main.css --watch",
     "build:tailwind": "npx postcss src/assets/css/main.css -o ./_site/css/main.css",
     "start": "ELEVENTY_ENV=development npm-run-all --parallel watch:*",
-    "build": "ELEVENTY_ENV=production npm-run-all --serial build:11ty build:tailwind",
+    "build": "ELEVENTY_ENV=production npm-run-all --serial build:11ty build:tailwind build:js",
     "fetch": "node --env-file=.env scripts/fetchNews.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
