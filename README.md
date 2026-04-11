@@ -13,7 +13,7 @@ A template for your daily news page. Run locally and enjoy curated tech news wit
 ## Deployed Version of the Project
 https://yesterdaynews.netlify.app/
 
-> **Note:** Updates news articles based on prior mentioned features every hour on UTC time.
+> **Note:** Updates news articles based on prior mentioned features every day at 00:00 on UTC time.
 
 ## Quick Start
 

@@ -1,7 +1,0 @@
-@layer components {
-    .card {
-        @apply cursor-pointer bg-white dark:bg-gray-900;
-        @apply border border-gray-200 dark:border-gray-900 rounded-lg;
-        @apply overflow-hidden shadow-sm hover:shadow-md transition-shadow;
-    }
-}

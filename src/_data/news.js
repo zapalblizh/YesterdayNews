@@ -27,8 +27,17 @@ export default async () => {
             return articles;
         }
 
-        articles.items = data.articles.filter(a => a.urlToImage);
+        const withImages = data.articles.filter(a => a.urlToImage);
 
+        const reachable = await Promise.all(
+            withImages.map(a =>
+                fetch(a.urlToImage, { method: "HEAD" })
+                    .then(r => r.ok)
+                    .catch(() => false)
+            )
+        );
+
+        articles.items = withImages.filter((_, i) => reachable[i]);
         articles.total = articles.items.length;
     } catch (error) {
         console.error(error);

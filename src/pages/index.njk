@@ -5,41 +5,45 @@ desc: A feed of the most recent articles in the technology sector that updates e
 permalink: /
 ---
 
-<div class="prose">
+<section>
     <h1>Article List</h1>
-    <p>
+    <p class="text-lg leading-relaxed mb-6">
         A feed of the most recent articles in the technology sector that updates every day on midnight (00:00), UTC time
-        using the <a href="https://newsapi.org/">NewsAPI</a>
+        using the <a class="text-teal-600 hover:underline underline-offset-2" href="https://newsapi.org/">NewsAPI</a>
     </p>
-</div>
-
+</section>
 
 {% if news.items.length %}
     <p class="text-sm mb-6 text-muted">Total retrieved: {{ news.total }} articles</p>
 
-    <ul class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {% for article in news.items %}
             {% if article.urlToImage %}
-            <li class="card group">
+            <a href="{{ article.url }}" target="_blank" rel="noopener noreferrer"
+               class="cursor-pointer bg-white dark:bg-gray-900 border-2 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow group">
                 <div class="aspect-opengraph overflow-hidden">
-                    <img class="object-cover w-full transition-transform duration-300 group-hover:scale-105" src="{{ article.urlToImage }}" alt="{{ article.title }}">
+                    <img {% if loop.index < 10 %}fetchpriority="high"{% endif %}
+                        class="object-cover w-full transition-transform duration-300 group-hover:scale-105"
+                        src="{{ article.urlToImage }}"
+                        alt="{{ article.title }}"
+                        {% if loop.index >= 10 %} loading="lazy" {% endif %}>
                 </div>
 
                 <div class="flex flex-col gap-2 p-6">
                     <p class="text-sm text-muted">{{ article.source.name }} &middot; {{ article.publishedAt | truncate(10, true, "") }}</p>
 
-                    <a class="group-hover:text-teal-600" href="{{ article.url }}" target="_blank" rel="noopener noreferrer">
-                        <h2 class="font-bold text-xl line-clamp-2">{{ article.title }}</h2>
-                    </a>
+                    <h2 class="font-bold text-xl line-clamp-2 group-hover:text-teal-600">
+                        {{ article.title }}
+                    </h2>
 
                     {% if article.description %}
                         <p class="line-clamp-3 text-muted">{{ article.description }}</p>
                     {% endif %}
                 </div>
-            </li>
+            </a>
             {% endif %}
         {% endfor %}
-    </ul>
+    </section>
 
 {% else %}
     <p>No news stored yet. Run <code>npm run fetch</code> first.</p>

@@ -28,7 +28,7 @@ export default {
             // urlPath: '/img/',
 
             // optional, output image widths
-            widths: ["320", "640", "960", "1200"], //["auto"],
+            widths: ["360"], //["auto"],
 
             defaultAttributes: {
                 // e.g. <img loading decoding> assigned on the HTML tag will override these values.

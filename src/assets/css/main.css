@@ -4,10 +4,8 @@
 /* Base */
 @import "./base/reset.css";
 @import "./base/base.css";
-@import "./base/typography.css";
 
-/* Components & Utilities */
-@import "./components/card.css";
+/* Utilities */
 @import "./utilities/utils.css";
 
 @theme {
