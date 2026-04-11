@@ -95,10 +95,3 @@ News fetching is configured in `src/_data/news.js`. By default it fetches:
 To change category, language, or other parameters, edit the `url.searchParams` calls in that file. 
 
 Available options are documented in the [NewsAPI docs](https://newsapi.org/docs/endpoints/top-headlines).
-
-## Upcoming Features
-
-- Light/Dark Mode custom configuration
-- Easier customization of news sources
-- Button to trigger a fresh fetch with different config
-  - Will be a commented out feature
